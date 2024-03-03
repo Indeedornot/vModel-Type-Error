@@ -36,9 +36,10 @@ export const HelloWorld = defineComponent(() => {
       <LogMessages
         onUpdate:modelValue={(e) => (toLog.value = e)}
         modelValue={toLog.value}
-        // Event not found even though it has a inheritAttrs: true
-        onClick={() => {}}
-        // onClick_Prevent - also has problems
+        //class is not found
+        class={{
+          'log-messages': true
+        }}
       />
     </div>
   )
@@ -58,7 +59,7 @@ const LogInput = defineComponent(
     return () => (
       <div>
         <input
-          v-model={input.value}
+          vModel={input.value}
           onKeydown={(e) => {
             if (e.key === 'Enter') {
               log(input.value)
